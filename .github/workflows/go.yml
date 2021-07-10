@@ -29,3 +29,4 @@ jobs:
 
       - name: Run tests
         run: ginkgo -r --randomizeAllSpecs --randomizeSuites --failOnPending --cover --trace --race --progress
+        working-directory: ./tests

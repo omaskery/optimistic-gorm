@@ -1,4 +1,4 @@
-module tests
+module github.com/omaskery/optimistic-gorm/tests
 
 go 1.16
 
