@@ -28,5 +28,5 @@ jobs:
         run: go get -v github.com/onsi/ginkgo/ginkgo
 
       - name: Run tests
-        run: ginkgo -r --randomizeAllSpecs --randomizeSuites --failOnPending --cover --trace --race --progress
+        run: ginkgo -r --randomizeAllSpecs --randomizeSuites --cover --trace --race --progress
         working-directory: ./tests
