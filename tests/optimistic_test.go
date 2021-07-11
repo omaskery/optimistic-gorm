@@ -93,14 +93,22 @@ var _ = Describe("Tests", func() {
 			log.Printf("creating database entry")
 			Expect(db.Transaction(func(tx *gorm.DB) error {
 				Expect(tx.Create(m).Error).To(Succeed())
-				Expect(tx.First(&m).Error).To(Succeed())
 				return nil
 			})).To(Succeed())
 
 			log.Printf("created database entry: %+v", m)
 		})
 
-		It("has the expected initial version", func() {
+		It("has the expected initial version in memory", func() {
+			Expect(m.Version).To(BeNumerically("==", 1))
+		})
+
+		It("has the expected initial version in the database", func() {
+			Expect(db.Transaction(func(tx *gorm.DB) error {
+				Expect(tx.First(&m).Error).To(Succeed())
+				return nil
+			})).To(Succeed())
+
 			Expect(m.Version).To(BeNumerically("==", 1))
 		})
 
@@ -144,8 +152,7 @@ var _ = Describe("Tests", func() {
 				Expect(m.Version).To(BeNumerically("==", 2))
 			})
 
-			// blocked on GORM issue https://github.com/go-gorm/gorm/pull/3893#issuecomment-877706731
-			XIt("it has persisted a higher version number", func() {
+			It("it has persisted a higher version number", func() {
 				Expect(db.Transaction(func(tx *gorm.DB) error {
 					Expect(tx.Unscoped().First(&m).Error).To(Succeed())
 					return nil
