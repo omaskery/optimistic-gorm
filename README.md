@@ -1,4 +1,4 @@
-# Optimistic GORM
+# Optimistic GORM [![Go Reference][docs-badge]][docs] [![Build & Test Status][workflows-badge]][workflows]
 
 This little library provides a basic building block for doing optimistic locking when using [GORM][gorm].
 
@@ -44,3 +44,7 @@ means:
    so, a `optimistic.ErrConcurrentModification` error is returned.
 
 [gorm]: https://gorm.io
+[docs]: https://pkg.go.dev/github.com/omaskery/optimistic-gorm
+[docs-badge]: https://pkg.go.dev/badge/github.com/omaskery/optimistic-gorm.svg
+[workflows]: https://github.com/omaskery/optimistic-gorm/actions/workflows/go.yml
+[workflows-badge]: https://github.com/omaskery/optimistic-gorm/actions/workflows/go.yml/badge.svg
